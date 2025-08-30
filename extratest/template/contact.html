@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{info.name}}</h1>
+            <div class="d-inline-flex mb-lg-5">
+                <p class="m-0 text-white"><a class="text-white" href="{% url 'home' %}">{{info.nav1}}</a></p>
+                <p class="m-0 text-white px-2">{{info.slash}}</p>
+                <p class="m-0 text-white">{{info.nav6}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{info.name1}}</h4>
+                <h1 class="display-4">{{info.title1}}</h1>
+            </div>
+            <div class="row px-3 pb-2">
+                <div class="col-sm-4 text-center mb-3">
+                    <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
+                    <h4 class="font-weight-bold">{{info.title2}}</h4>
+                    <p>{{info.addr}}</p>
+                </div>
+                <div class="col-sm-4 text-center mb-3">
+                    <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
+                    <h4 class="font-weight-bold">{{info.title3}}</h4>
+                    <p>{{info.phone}}</p>
+                </div>
+                <div class="col-sm-4 text-center mb-3">
+                    <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
+                    <h4 class="font-weight-bold">{{info.title4}}</h4>
+                    <p>{{info.email}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pb-5">
+                    <img class="img-thumbnail" src="{{info.img.url}}" alt="">
+                </div>
+                <div class="col-md-6 pb-5">
+                    <div class="contact-form">
+                        <div id="success"></div>
+
+                        <!-- Django Messages Start -->
+                                {% if messages %}
+                                <div class="mb-4">
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <span type="test" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                        <!-- Django Messages End -->
+
+                        <form  method="POST">
+                            {% csrf_token %}
+                            <div class="control-group">
+                                <input type="text" name="name" class="form-control bg-transparent p-4"  placeholder="{{last.hol1}}"
+                                   required />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" name="email" class="form-control bg-transparent p-4"  placeholder="{{last.hol2}}"
+                                  required  />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" name="subject" class="form-control bg-transparent p-4" placeholder="{{last.hol3}}"
+                                   required />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea type="message" name="message" class="form-control bg-transparent py-3 px-4" rows="5"  placeholder="{{last.hol4}}" required></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" >{{last.button}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+{% endblock %}

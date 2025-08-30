@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{info.name}}</h1>
+        <div class="d-inline-flex mb-lg-5">
+            <p class="m-0 text-white"><a class="text-white" href="{% url 'home' %}">{{info.nav1}}</a></p>
+            <p class="m-0 text-white px-2">{{info.slash}}</p>
+            <p class="m-0 text-white">{{info.nav5}}</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Testimonial / Reservation List Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{info.name1}}</h4>
+            <h1 class="display-4">{{info.title1}}</h1>
+            <!-- <em>{{info.title2}}</em>
+            <span><strong>{{info.title3}} <a href="{% url 'reservation' %}">{{info.click}}</a></strong></span> -->
+            <span><a style="font-weight: bold;" href="{% url 'reservation' %}">Book your Table</a></span>
+        </div>
+
+        <!-- Display Reservations -->
+        <div class="row mt-5">
+            {% for r in reservations %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light shadow-sm p-4">
+                    <h5 class="text-primary mb-2">{{ r.name }}</h5>
+                    <p><strong>Email:</strong> {{ r.email }}</p>
+                    <p><strong>Date:</strong> {{ r.date }}</p>
+                    <p><strong>Time:</strong> {{ r.time }}</p>
+                    <p><strong>People:</strong> {{ r.number }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No reservations yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Testimonial / Reservation List End -->
+
+{% endblock %}

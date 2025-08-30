@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{reservon.name}}</h1>
+            <div class="d-inline-flex mb-lg-5">
+                <p class="m-0 text-white"><a class="text-white" href="{% url 'home' %}">{{reservon.nav1}}</a></p>
+                <p class="m-0 text-white px-2">{{reservon.slash}}</p>
+                <p class="m-0 text-white">{{reservon.nav4}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Reservation Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="reservation position-relative overlay-top overlay-bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 my-5 my-lg-0">
+                        <div class="p-5">
+                            <div class="mb-4">
+                                <h1 class="display-3 text-primary">{{reservon.disc}}</h1>
+                                <h1 class="text-white">{{reservon.online}}</h1>
+                            </div>
+                            <p class="text-white">{{reservon.descrip}}</p>
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>{{reservon.title1}}</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>{{reservon.title2}}</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>{{reservon.title3}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                            <h1 class="text-white mb-4 mt-5">{{table.title}}</h1>
+
+                             <!-- Django Messages Start -->
+                                {% if messages %}
+                                <div class="mb-4">
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <span type="text" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            <!-- Django Messages End -->
+
+                            <form class="mb-5" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control bg-transparent border-primary p-4" placeholder="{{table.placehol1}}" required/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control bg-transparent border-primary p-4" placeholder="{{table.placehol2}}" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="date" id="date" data-target-input="nearest">
+                                        <input type="text" name="date" class="form-control bg-transparent border-primary p-4 datetimepicker-input" 
+                                            placeholder="{{table.placehol3}}" data-target="#date" data-toggle="datetimepicker" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="time" id="time" data-target-input="nearest">
+                                        <input type="text" name="time" class="form-control bg-transparent border-primary p-4 datetimepicker-input" 
+                                            placeholder="{{table.placehol4}}" data-target="#time" data-toggle="datetimepicker" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <input type="number" name="number" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="{{table.placehol5}}" data-target="#number" data-toggle="number" required/>
+                                </div>
+                                
+                                <div>
+                                    <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">{{table.button}}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reservation End -->
+
+
+{% endblock %}

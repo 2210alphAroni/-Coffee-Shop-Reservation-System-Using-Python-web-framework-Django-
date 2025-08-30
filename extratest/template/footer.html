@@ -1,0 +1,94 @@
+<!-- Footer Start -->
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">{{allinfo.title1}}</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>{{allinfo.addr}}</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>{{allinfo.phone}}</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>{{allinfo.email}}</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">{{allinfo.title2}}</h4>
+                <p>{{allinfo.text1}}</p>
+                <div class="d-flex justify-content-start">
+                    <a href="https://www.linkedin.com/in/nabinur-islam-roni-46b894373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                        <button style="background-color: rgba(51, 33, 29, .8); color: whitesmoke; border-radius: 30px;">{{allinfo.link1}}</button></a><br>
+                    <a href="https://github.com/2210alphAroni" target="_blank"><button style="background-color: rgba(51, 33, 29, .8); border-radius: 30px; color: whitesmoke;">{{allinfo.link2}}</button></a><br>
+                    <a href="https://www.facebook.com/ronystorys" target="_blank"><button style="background-color: rgba(51, 33, 29, .8); border-radius: 30px; color: whitesmoke;">{{allinfo.link3}}</button></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">{{allinfo.title3}}</h4>
+                <div>
+                    <h6 class="text-white text-uppercase">{{allinfo.week1}}</h6>
+                    <p>{{allinfo.shift1}}</p>
+                    <h6 class="text-white text-uppercase">{{allinfo.week2}}</h6>
+                    <p>{{allinfo.shift2}}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">{{allinfo.title4}}</h4>
+                <p>{{allinfo.text2}}</p>
+                <div class="w-100">
+
+                    <!-- Django Messages Start -->
+                                {% if messages %}
+                                <div class="mb-4">
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <span type="test" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                    <!-- Django Messages End -->
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="input-group">
+                        <input type="email" name="email" class="form-control border-light" style="padding: 25px;" placeholder="{{allinfo.placeholder}}" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary font-weight-bold px-3">{{allinfo.button}}</button>
+                        </div>
+                    </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <p class="mb-2 text-white">{{d.copyright}} &copy; <a class="font-weight-bold" href="https://blog-site-using-html.vercel.app/" target="_blank">{{d.website}}</a>{{d.text}}</a></p>
+            <p class="m-0 text-white">{{d.design}} <a class="font-weight-bold" href="https://github.com/2210alphAroni" target="_blank">{{d.name}}</a></a></p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+        <i class="fa fa-arrow-up">↑</i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/waypoints/waypoints.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Easing (for smooth scroll) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
